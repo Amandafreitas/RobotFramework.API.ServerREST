@@ -1,9 +1,6 @@
 RobotFramework.API.ServerREST
 ===============
 
-.. contents::
-   :local:
-
 Introduction
 ------------
 
@@ -16,14 +13,13 @@ All Python libraries can be installed using:
 
     pip install -r requirements.txt
 
-Usage
------
-
-- Test Case:
+Test Case
+------------
 
   - TC01: Cadastrar um novo usuário com sucesso na ServerRest
 
-- Execution
+Execution
+------------
 
 Tests are executed from the command line using
 
