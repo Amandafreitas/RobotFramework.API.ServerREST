@@ -22,8 +22,7 @@ Cadastrar o usuário criado na ServerRest
     ...    Dados do usuário: ${\n}Nome: ${body}[nome] ${\n}Email: ${body}[email] ${\n}administrador: ${body}[administrador]
 
     Log To Console    ${\n}--- Cadastrando novo usuário
-    ${headers}    Create Dictionary    accept=application/json    Content-Type=application/json
-    Create Session    alias=ServerRest    url=https://serverest.dev    headers=${headers}    verify=${TRUE}
+    Create Session    alias=ServerRest    url=${Base_URL}    headers=${headers}    verify=${TRUE}
     ${resposta}    POST On Session    alias=ServerRest    url=/usuarios    json=${body}    expected_status=201
     Status Should Be
     ...    201
@@ -40,8 +39,7 @@ Cadastrar o usuário criado na ServerRest
 Verificar se o usuário foi cadastrado com sucesso
     [Arguments]    ${id}    ${nome}    ${email}
     Log To Console    ${---}\nVerificando se o usuário foi cadastrado${---}
-    ${headers}    Create Dictionary    accept=application/json    Content-Type=application/json
-    Create Session    alias=ServerRest    url=https://serverest.dev    headers=${headers}    verify=${TRUE}
+    Create Session    alias=ServerRest    url=${Base_URL}    headers=${headers}    verify=${TRUE}
     ${resposta}    GET On Session    alias=ServerRest    url=/usuarios
     Log To Console    --- Filtrando títulos com id: ${id}
     @{usuario}    Get Value From Json    ${resposta.json()}    $..*[?(@._id=="${id}")]
